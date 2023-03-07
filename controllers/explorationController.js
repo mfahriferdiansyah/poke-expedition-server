@@ -111,9 +111,11 @@ class ExplorationController {
     static async deleteExploration(req, res, next){
         try {
             let {id} = req.params
+            let{id:UserId} = req.user
             let deletedExploration = await Exploration.destroy({
                 where: {
-                    id
+                    UserPokemonId: id,
+                    UserId
                 }
             })
             if(!deletedExploration) throw {name: 'NotFound'}
