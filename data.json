@@ -1,0 +1,87 @@
+{
+    "Users": [
+        {
+            "username": "Ash",
+            "email": "ash@pokemon.com",
+            "password": "12345",
+            "balance": 0
+        },
+        {
+            "username": "Joel",
+            "email": "joel@pokemon.com",
+            "password": "12345",
+            "balance": 0
+        }
+    ],
+    "Items": [
+        {
+            "name": "Energy Stone",
+            "price": 10000
+        },
+        {
+            "name": "Evolve Stone",
+            "price": 20000
+        }
+    ],
+    "Regions": [
+        {
+            "name": "Johto",
+            "time": 91827419,
+            "exp": 100000,
+            "level": 5,
+            "chance": 30
+        },
+        {
+            "name": "Kanto",
+            "time": 51827419,
+            "exp": 50000,
+            "level": 2,
+            "chance": 70
+        }
+    ],
+    "EnemyPokemons": [
+        {
+            "name": "Bulbasaur",
+            "image": "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg",
+            "type": "grass",
+            "hp": 100,
+            "atk": 20
+        }
+    ],
+    "UserItems": [
+        {
+            "ItemId": 2,
+            "UserId": 1
+        },
+        {
+            "ItemId": 1,
+            "UserId": 1
+        },
+        {
+            "ItemId": 1,
+            "UserId": 2
+        }
+    ],
+    "UserPokemons": [
+        {
+            "exp": 0,
+            "level": 0,
+            "UserId": 1,
+            "name": "Bulbasaur",
+            "image": "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg",
+            "type": "grass",
+            "hp": 100,
+            "atk": 20
+        }
+    ],
+    "Explorations": [
+        {
+            "isBattle": true,
+            "time": 121222,
+            "RegionId": 1,
+            "UserId": 1,
+            "UserPokemonId": 1,
+            "EnemyPokemonId": 1
+        }
+    ]
+}
