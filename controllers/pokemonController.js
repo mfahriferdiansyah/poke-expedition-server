@@ -8,24 +8,15 @@ class PokemonController {
     static async getPokemon(req, res, next) {
         try {
             let {id} = req.user
-            let checkingExpedition = await Exploration.findAll({
+            let pokemonInExpedition = await Exploration.findAll({
                 where: {
                     UserId: id,
+                },
+                include:{ 
+                    model: UserPokemon
                 }
             })   
-            let pokemonInExpeditionId = checkingExpedition.map(el => el.UserPokemonId)
-            
-            let pokemonInExpedition = await UserPokemon.findAll({
-                where: {
-                    [Op.and]: [
-                        {UserId: id},
-                        {id: {
-                            [Op.in] : pokemonInExpeditionId
-                            }
-                        }
-                    ]
-                }
-            })
+            let pokemonInExpeditionId = pokemonInExpedition.map(el => el.UserPokemonId)
 
             let pokemonNotInExpedition = await UserPokemon.findAll({
                 where: {
