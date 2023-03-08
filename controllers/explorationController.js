@@ -114,7 +114,7 @@ class ExplorationController {
             let{id:UserId} = req.user
             let deletedExploration = await Exploration.destroy({
                 where: {
-                    UserPokemonId: id,
+                    id,
                     UserId
                 }
             })
