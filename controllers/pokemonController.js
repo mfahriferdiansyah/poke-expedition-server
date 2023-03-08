@@ -40,12 +40,11 @@ class PokemonController {
         try {
             //Verifikasi payment gateway terlebih dahulu
             let { id } = req.user
-            let { bannerId: RegionId } = req.params
+            let { bannerId: RegionId } = req.body
             let findPokemon = await getRandomPokemon(RegionId)
-            // console.log(findPokemon)
             let { name, image, type, hp, atk } = findPokemon
             let userPokemon = await UserPokemon.create({ name, image, type, hp, atk, exp: 0, level: 0, UserId: id })
-            res.status(200).json({ message: 'Sweet, you got new pokemon', userPokemon })
+            res.status(201).json({ message: 'Sweet, you got new pokemon', userPokemon })
         } catch (error) {
             next(error)
         }

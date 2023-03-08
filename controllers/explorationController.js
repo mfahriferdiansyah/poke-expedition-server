@@ -63,12 +63,15 @@ class ExplorationController {
              * 
              */
             let{id} = req.user 
-            let {RegionId} = req.params
-            let {UserPokemonId} = req.body //Tombol submit yang ada pada client berupa form yang berisi UserPokemonId
+            let {UserPokemonId, RegionId} = req.body //Tombol submit yang ada pada client berupa form yang berisi UserPokemonId
             
             let regionData = await Region.findByPk(RegionId)
             if(!regionData) throw {name: 'NotFound'}
 
+            const checkPokemon = await UserPokemon.findByPk(UserPokemonId)
+            if(!checkPokemon) throw {name: 'NotFound'}
+            if(id !== checkPokemon.UserId) throw {name: 'Unauthorized'}
+            
             let isBattle = false
             if(Math.random() * 100 < regionData.chance) isBattle = true
 
@@ -116,9 +119,11 @@ class ExplorationController {
             let reward = 0;
             let dataExploration = await Exploration.findByPk(id)
             if(!dataExploration) throw{name: 'NotFound'}
+            
+            if(UserId !== dataExploration.UserId) throw{name: 'Unauthorized'}
+
             let isExpedition = dataExploration.time + new Date(dataExploration.createdAt).getTime() > new Date(Date.now()).getTime()
             if(!isExpedition) {
-                console.log('masuk', dataExploration.rewardCoin)
                 let userBalance = await User.increment('balance', {
                     by: dataExploration.rewardCoin,
                     where: {
@@ -126,7 +131,6 @@ class ExplorationController {
                     }
                 })
                 reward = dataExploration.rewardCoin
-                console.log(userBalance, 'gamasuk')
             }
             let deletedExploration = await Exploration.destroy({
                 where: {
