@@ -117,7 +117,7 @@ class ExplorationController {
             let dataExploration = await Exploration.findByPk(id)
             if(!dataExploration) throw{name: 'NotFound'}
             let isExpedition = dataExploration.time + new Date(dataExploration.createdAt).getTime() > new Date(Date.now()).getTime()
-            if(isExpedition) {
+            if(!isExpedition) {
                 console.log('masuk', dataExploration.rewardCoin)
                 let userBalance = await User.increment('balance', {
                     by: dataExploration.rewardCoin,
