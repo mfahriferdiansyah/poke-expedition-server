@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       balance: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

@@ -12,6 +12,9 @@ module.exports = {
       isBattle: {
         type: Sequelize.BOOLEAN
       },
+      rewardCoin: {
+        type: Sequelize.INTEGER
+      },
       time: {
         type: Sequelize.INTEGER
       },

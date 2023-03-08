@@ -15,7 +15,7 @@ module.exports = {
       time: {
         type: Sequelize.INTEGER
       },
-      exp: {
+      coin: {
         type: Sequelize.INTEGER
       },
       level: {
