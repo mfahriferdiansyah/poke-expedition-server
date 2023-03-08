@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     isBattle: DataTypes.BOOLEAN,
+    rewardCoin: DataTypes.INTEGER,
     time: DataTypes.INTEGER,
     UserId: DataTypes.INTEGER,
     UserPokemonId: DataTypes.INTEGER,

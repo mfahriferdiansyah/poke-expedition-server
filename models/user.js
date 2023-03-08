@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {msg: `Password is required`}
       }
     },
-    balance: DataTypes.STRING
+    balance: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',

@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Region.init({
     name: DataTypes.STRING,
     time: DataTypes.INTEGER,
-    exp: DataTypes.INTEGER,
+    coin: DataTypes.INTEGER,
     level: DataTypes.INTEGER,
     chance: DataTypes.INTEGER
   }, {

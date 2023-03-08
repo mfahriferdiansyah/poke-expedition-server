@@ -94,6 +94,7 @@ class ExplorationController {
                 defaults: {
                 isBattle,
                 time,
+                rewardCoin: Math.random() * regionData.coin,
                 UserId: id,
                 RegionId,
                 UserPokemonId,
@@ -108,10 +109,25 @@ class ExplorationController {
         }
     }
 
-    static async deleteExploration(req, res, next){
+    static async claimExploration(req, res, next){
         try {
             let {id} = req.params
             let{id:UserId} = req.user
+            let reward = 0;
+            let dataExploration = await Exploration.findByPk(id)
+            if(!dataExploration) throw{name: 'NotFound'}
+            let isExpedition = dataExploration.time + new Date(dataExploration.createdAt).getTime() > new Date(Date.now()).getTime()
+            if(isExpedition) {
+                console.log('masuk', dataExploration.rewardCoin)
+                let userBalance = await User.increment('balance', {
+                    by: dataExploration.rewardCoin,
+                    where: {
+                        id: UserId
+                    }
+                })
+                reward = dataExploration.rewardCoin
+                console.log(userBalance, 'gamasuk')
+            }
             let deletedExploration = await Exploration.destroy({
                 where: {
                     id,
@@ -119,7 +135,7 @@ class ExplorationController {
                 }
             })
             if(!deletedExploration) throw {name: 'NotFound'}
-            res.status(200).json({message: `Expedition ended`})
+            res.status(200).json({message: `Expedition ended`, reward})
         } catch (error) {
             next(error)
         }
