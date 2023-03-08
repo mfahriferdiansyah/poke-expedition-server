@@ -3,7 +3,7 @@ module.exports = (err, req, res, next) => {
     let status, message
     switch (err.name) {
         case `isDeployed`:
-            status = 403
+            status = 400
             message = `Pokemon still in expedition`
             break
 
@@ -32,6 +32,11 @@ module.exports = (err, req, res, next) => {
         case `Unauthenticated`:
             status = 401
             message = `You don't have access to this page`
+        break;
+
+        case `Unauthorized`:
+            status = 403
+            message = `You don't have access to this action`
         break;
 
         case `NotFound`:

@@ -3,7 +3,7 @@ const midtransClient = require('midtrans-client');
 class MidtransController {
     static async getToken(req, res, next) {
         try {
-            let {id, email, balance} = req.user
+            let {email} = req.user
             
             let snap = new midtransClient.Snap({
                 // Set to true if you want Production Environment (accept real transaction).
@@ -25,6 +25,7 @@ class MidtransController {
             };
             
             const midtransToken = await snap.createTransaction(parameter)
+
             res.status(201).json(midtransToken)
         } catch (error) {
             next(error)

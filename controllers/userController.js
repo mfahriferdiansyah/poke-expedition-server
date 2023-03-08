@@ -35,7 +35,7 @@ class UserController {
                 balance: 0
             })
             let { username:Username, email:Email, balance:Balance } = dataUser
-            res.status(200).json({Username, Email, Balance})
+            res.status(201).json({Username, Email, Balance})
         } catch (error) {
             next(error)
         }
