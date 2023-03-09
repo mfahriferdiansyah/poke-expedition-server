@@ -233,6 +233,13 @@ _Response (201 - Created)_
 }
 ```
 
+_Response (400 - Bad Request)_
+```json
+{
+    "message": "<midtranserrormessage"
+}
+```
+
 &nbsp;
 
 ## GET /pub/pokemons
