@@ -1,4 +1,6 @@
 module.exports = (err, req, res, next) => {
+    console.log(err)
+    console.log(err.message??'')
     console.log(err.name)
     let status, message
     switch (err.name) {
@@ -28,6 +30,10 @@ module.exports = (err, req, res, next) => {
             message = `Invalid Email/Password`
             break;
 
+        case 'MidtransError':
+            res.status(400).json({ message: err.ApiResponse.error_messages[0] });
+            break;
+
         case `JsonWebTokenError`:
         case `InvalidToken`:
             status = 401
@@ -37,21 +43,21 @@ module.exports = (err, req, res, next) => {
         case `Unauthenticated`:
             status = 401
             message = `You don't have access to this page`
-        break;
+            break;
 
         case `Unauthorized`:
             status = 403
             message = `You don't have access to this action`
-        break;
+            break;
 
         case `NotFound`:
             status = 404,
-            message = `Data not found`
+                message = `Data not found`
             break;
 
         default:
             status = 500,
-            message = 'Internal server error'
+                message = 'Internal server error'
             break;
     }
     res.status(status).json({ message })
