@@ -11,6 +11,8 @@ List of available endpoints:
 - `GET /pub/pokemons`
 - `POST /pub/pokemons`
 - `GET /pub/regions`
+- `GET /pub/user`
+- `PATCH /pub/user`
 
 &nbsp;
 
