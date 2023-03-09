@@ -40,6 +40,32 @@ class UserController {
             next(error)
         }
     }
+
+    static async changeBalance(req, res, next){
+        try {
+            let {id, balance} = req.user
+            let {price} = req.body
+            if(balance < price) throw {name: 'NoMoney'}
+            const userData = await User.decrement('balance', {
+                by: price,
+                where: {
+                    id
+                }
+            })
+            res.status(204).json()
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async getUser(req, res, next){
+        try {
+            let {id, email, balance} = req.user
+            res.status(200).json({id, email, balance})
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = UserController
