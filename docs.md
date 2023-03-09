@@ -4,17 +4,17 @@
 
 List of available endpoints:
 
-- `GET /explorations`
-- `POST /explorations`
-- `DELETE /explorations/:id`
-- `POST /midtrans-get-token`
-- `GET /pokemons`
-- `POST /pokemons`
-- `GET /regions`
+- `GET /pub/explorations`
+- `POST /pub/explorations`
+- `DELETE /pub/explorations/:id`
+- `POST /pub/midtrans-get-token`
+- `GET /pub/pokemons`
+- `POST /pub/pokemons`
+- `GET /pub/regions`
 
 &nbsp;
 
-## GET /explorations
+## GET /pub/explorations
 
 Description:
 - Get all data of User including, UserPokemons and Explorations
@@ -87,7 +87,7 @@ _Response (200 - OK)_
 
 &nbsp;
 
-## POST /explorations
+## POST /pub/explorations
 
 Description:
 - Send pokemon to expedition/exploration
@@ -161,10 +161,10 @@ _Response (404 - Not Found)_
 
 &nbsp;
 
-## DELETE /explorations/:id
+## DELETE /pub/explorations/:id
 
 Description:
-- Claim/end pokemon expedition
+- Claim/ended pokemon expedition
 
 Request:
 - headers
@@ -207,7 +207,7 @@ _Response (404 - Not Found)_
 
 &nbsp;
 
-## POST /midtrans-get-token
+## POST /pub/midtrans-get-token
 Description:
 - Get midtrans token
 
@@ -235,7 +235,7 @@ _Response (201 - Created)_
 
 &nbsp;
 
-## GET /pokemons
+## GET /pub/pokemons
 Description:
 - Get pokemon data both in expedition and not in expedition
 
@@ -288,9 +288,9 @@ _Response (200 - OK)_
 
 &nbsp;
 
-## POST /pokemons
+## POST /pub/pokemons
 Description:
-- Get pokemon data both in expedition and not in expedition
+- Gacha pokemon
 
 Request:
 - headers
@@ -332,7 +332,7 @@ _Response (201 - Created)_
 ```
 &nbsp;
 
-## GET /regions
+## GET /pub/regions
 Description:
 - Get all region list
 
