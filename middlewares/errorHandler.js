@@ -18,6 +18,11 @@ module.exports = (err, req, res, next) => {
             message = `Email/Password is required`
             break;
 
+        case `NoMoney`:
+            status = 400
+            message = `Balance not enough`
+            break;
+
         case `InvalidEmailPassword`:
             status = 401
             message = `Invalid Email/Password`
