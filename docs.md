@@ -376,6 +376,69 @@ _Response (200 - OK)_
 ]
 ```
 
+## GET /pub/user
+Description:
+- Get general data about user
+
+Request:
+- headers
+```json
+{
+  "access_token": "<jsonwebtoken>"
+}
+```
+- user
+```json
+{
+    "id": "<integer>",
+    "email": "<string>",
+    "balance": "<integer>"
+}
+```
+_Response (200 - OK)_
+```json
+{
+    "id": 1,
+    "email": "test@pkmns.coms",
+    "balance": 0
+}
+```
+
+## PATCH /pub/user
+Description:
+- Check and change balance according to price
+
+Request:
+- headers
+```json
+{
+  "access_token": "<jsonwebtoken>"
+}
+```
+- user
+```json
+{
+    "id": "<integer>",
+    "balance": "<integer>"
+}
+```
+- body
+```json
+{
+    "price": "<integer>"
+}
+```
+_Response (204 - No Content)_
+```json
+```
+
+_Response (400 - Bad request)_
+```json
+{
+    "message": "Balance not enough"
+}
+```
+
 &nbsp;
 
 ## Global Error
@@ -384,7 +447,7 @@ _Response (401 - Unauthenticated)_
 
 ```json
 {
-  "message": "Wrong Login Credential"
+  "message": "Wrong login credential"
 }
 ```
 
